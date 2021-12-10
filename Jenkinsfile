@@ -1,17 +1,16 @@
 pipeline {
   agent any
 
-  /*tools {
+  tools {
     jdk 'jdk-11'
     maven 'mvn-3.6.3'
-  } */
+  }
 
   stages {
     stage('Build') {
       steps {
-        def mvnHome = tool name: 'mvn-3.6.3', type: 'maven'
         withMaven(maven : 'mvn-3.6.3') {     
-          sh "${mvnHome}/bin/mvn package"
+          sh "mvn package"
         }
       }
     }
