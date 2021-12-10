@@ -9,8 +9,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withMaven(maven : 'mvn-3.6.3') {
-          def mvnHome = tool name: 'mvn-3.6.3', type: 'maven'
+        def mvnHome = tool name: 'mvn-3.6.3', type: 'maven'
+        withMaven(maven : 'mvn-3.6.3') {     
           sh "${mvnHome}/bin/mvn package"
         }
       }
